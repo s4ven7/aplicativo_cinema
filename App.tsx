@@ -1,27 +1,43 @@
-import { StatusBar, StyleSheet, Text, View } from 'react-native';
-import Header from './components/Header';
-import SearchBar from './components/SearchBar';
-import CategoryButton from './components/CategoryButton';
+import { StatusBar, StyleSheet, Text, View } from "react-native";
+import  SearchBar  from "./components/SearchBar";
+import CategoryButton from "./components/CategoryButton";
+import  MovieCard  from "./components/MovieCard";
+import Header from "./components/Header";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      <Header/>
-      <SearchBar/>
-      
+      <StatusBar barStyle="light-content" backgroundColor="#0b0d14" />
+
+      <Header />
+      <SearchBar />
       <View style={styles.containerCategory}>
-        <CategoryButton title='Ação' selected={true}/>
-        <CategoryButton title='Ação' selected={false}/>
+        <CategoryButton title="Todos" selected={true} />
+        <CategoryButton title="Ação" selected={false} />
+        <CategoryButton title="Animação" selected={false} />
+        <CategoryButton title="Comédia" selected={false} />
+        <CategoryButton title="Drama" selected={false} />
       </View>
+
       <View style={styles.sectionMovie}>
         <View style={styles.sectionTitleRow}>
           <View style={styles.accentBar}></View>
-          <Text style={styles.sectionTitle}>Filmes em destaques</Text>
+          <Text style={styles.sectionTitle}>Filmes em destaque</Text>
         </View>
+
         <View style={styles.countBadge}>
           <Text style={styles.countTitle}>6 filmes</Text>
         </View>
+      </View>
+
+      <View style={styles.featuredMovie}>
+        <MovieCard
+          image={require("assets/movies/homem-aranha-um-novo-dia.jpg")}
+          title="Homem-Aranha: Um novo dia"
+          category="Ação"
+          rating={4.9}
+          favorite = {false}
+        />
       </View>
     </View>
   );
@@ -30,48 +46,51 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0B0D14',
-    paddingTop:40,
+    backgroundColor: "#0b0d14",
+    paddingTop: 40,
   },
-  containerCategory:{
-    flexDirection:'row',
-    gap:10,
-    marginLeft:20,
+  containerCategory: {
+    flexDirection: "row",
+    marginLeft: 20,
+    gap: 10,
   },
-  sectionMovie:{
-    flexDirection:'row',
-    justifyContent:'space-between',
-    marginHorizontal:20,
-    marginBlock:20,
+  sectionMovie: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBlock: 20,
+    marginHorizontal: 20,
   },
-  sectionTitleRow:{
-    flexDirection:'row',
-    alignItems:'center',
-    gap:8,
+  sectionTitleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
   },
-  accentBar:{
-    height:18,
-    width:4,
-    backgroundColor:"#FF3366",
-    borderRadius:2,
+  accentBar: {
+    height: 18,
+    width: 4,
+    backgroundColor: "#ff3366",
+    borderRadius: 2,
   },
-  sectionTitle:{
-    fontSize:20,
-    fontWeight:'800',
-    color:"#FFFFFF",
-    letterSpacing:0.3,
+  sectionTitle: {
+    color: "#ffffff",
+    fontSize: 20,
+    fontWeight: 800,
+    letterSpacing: 0.3,
   },
-  countBadge:{
-    backgroundColor:"#161a28",
-    borderWidth:1,
-    borderColor:"#262d42",
-    borderRadius:12,
-    paddingHorizontal:10,
-    paddingVertical:4,
+  countBadge: {
+    backgroundColor: "#161a28",
+    borderWidth: 1,
+    borderColor: "#262d42",
+    borderRadius: 12,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
   },
-  countTitle:{
-    fontSize:12,
-    fontWeight:'700',
-    color:"#94a3b8"
+  countTitle: {
+    color: "#94a3b8",
+    fontSize: 12,
+    fontWeight: 700,
+  },
+  featuredMovie: {
+    marginHorizontal: 20,
   },
 });
